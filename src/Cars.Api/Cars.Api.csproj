@@ -5,6 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Cars.Domain\Cars.Domain.csproj" />
+      <ProjectReference Include="..\Cars.Migrations\Cars.Migrations.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     </ItemGroup>
 
 </Project>

@@ -8,4 +8,8 @@
       <ProjectReference Include="..\Cars.Common\Cars.Common.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
+    </ItemGroup>
+
 </Project>
