@@ -4,4 +4,8 @@
         <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Cars.Common\Cars.Common.csproj" />
+    </ItemGroup>
+
 </Project>
