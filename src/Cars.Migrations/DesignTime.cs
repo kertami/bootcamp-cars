@@ -13,7 +13,7 @@ namespace Cars.Migrations
             var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
             var connectionString =
                 "Server=localhost;" +
-                "Initial Catalog=GreenfieldTest;" +
+                "Initial Catalog=greenfield;" +
                 "User ID=greenfield;" +
                 "Password=p@$$w0rd!;" +
                 "MultipleActiveResultSets=True;" +
