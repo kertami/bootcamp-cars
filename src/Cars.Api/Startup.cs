@@ -21,16 +21,10 @@ namespace Cars.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(
-                options =>
-                {
-                    options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), sqlOptions =>
-                        sqlOptions.MigrationsAssembly("Cars.Migrations"));
-                });
+            services.AddDbContext<DataContext>(AddDbContextOptions);
             
             services.AddControllers();
             services.AddCarsApplicationServices();
-            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -39,6 +33,12 @@ namespace Cars.Api
                     Version = "v1"
                 });
             });
+        }
+
+        protected virtual void AddDbContextOptions(DbContextOptionsBuilder options)
+        {
+            options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), sqlOptions =>
+                sqlOptions.MigrationsAssembly("Cars.Migrations"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,12 +51,12 @@ namespace Cars.Api
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-
             app.UseAuthorization();
             
             app.UseSwagger();
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("../swagger/v1/swagger.json", "My API V1"); });
+
+            app.UseRouting();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

@@ -24,24 +24,25 @@ namespace Cars.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<string>> GetCarModel(int id)
+        public async Task<ActionResult<CarModelDetail>> GetCarModel(int id)
         {
             return Ok(await _carModelManager.GetCarModelAsync(id));
         }
 
         [HttpPost]
-        public async Task CreateCarModel([FromBody] CarModelDetail car)
+        public async Task<ActionResult<CarModelSummary>> CreateCarModel([FromBody] CarModelDetail car)
         {
-            await _carModelManager.CreateCarModelAsync(car);
+            var carModelSummary = await _carModelManager.CreateCarModelAsync(car);
+            return CreatedAtAction("GetCarModel", new { id = carModelSummary.Id }, carModelSummary);
         }
 
-        [HttpPut]
-        public async Task UpdateCarModel(int id, [FromBody] CarModelDetail car)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<CarModelDetail>> UpdateCarModel(int id, [FromBody] CarModelDetail car)
         {
-            await _carModelManager.UpdateCarModelAsync(id, car);
+            return Ok(await _carModelManager.UpdateCarModelAsync(id, car));
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task DeleteCarModel(int id)
         {
             await _carModelManager.DeleteCarModelAsync(id);
