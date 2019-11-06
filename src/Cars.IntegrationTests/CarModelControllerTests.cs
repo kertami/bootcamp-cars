@@ -21,7 +21,7 @@ namespace Cars.IntegrationTests
         }
         
         [Fact]
-        public async Task GetAllCarModels()
+        public async Task CarModels_Get_ReturnsCarModels()
         {
             // setup
             await _factory.ExecuteOnDbContext(ctx => ctx.ClearAll());
@@ -43,7 +43,7 @@ namespace Cars.IntegrationTests
                     .Including(p => p.Name));
         }
         [Fact]
-        public async Task GetAllCarModelDetail()
+        public async Task CarModels_GetDetail_ReturnsCarModelDetails()
         {
             // setup
             await _factory.ExecuteOnDbContext(ctx => ctx.ClearAll());
@@ -63,7 +63,7 @@ namespace Cars.IntegrationTests
                 .Including(p => p.Type));
         }
         [Fact]
-        public async Task AddCarModelDetail()
+        public async Task CarModels_Post_AddsCarModel()
         {
             // setup
             await _factory.ExecuteOnDbContext(ctx => ctx.ClearAll());
@@ -99,7 +99,7 @@ namespace Cars.IntegrationTests
         }
         
         [Fact]
-        public async Task DeleteCarModel()
+        public async Task CarModels_Delete_RemovesCarModel()
         {
             // setup
             await _factory.ExecuteOnDbContext(ctx => ctx.ClearAll());
@@ -115,7 +115,7 @@ namespace Cars.IntegrationTests
         }
         
         [Fact]
-        public async Task UpdateCarModel()
+        public async Task CarModels_Put_UpdatesCarModel()
         {
             // setup
             await _factory.ExecuteOnDbContext(ctx => ctx.ClearAll());

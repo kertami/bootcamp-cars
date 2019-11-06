@@ -4,7 +4,7 @@ using Cars.Application.Managers.Interfaces;
 using Cars.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Cars.API.Controllers
+namespace Cars.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
