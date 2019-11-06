@@ -1,8 +1,8 @@
 /* tslint:disable */
 export enum CarType {
-  Unkown = 'unkown',
-  Suv = 'suv',
-  Break = 'break',
-  Hatchback = 'hatchback',
-  Berline = 'berline'
+  Unkown = 'Unkown',
+  Suv = 'SUV',
+  Break = 'Break',
+  Hatchback = 'Hatchback',
+  Berline = 'Berline'
 }

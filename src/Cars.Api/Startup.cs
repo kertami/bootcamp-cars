@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Cars.Application;
@@ -9,7 +10,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Cars.Api
 {
@@ -30,9 +34,12 @@ namespace Cars.Api
             services.AddControllers()
                 .AddNewtonsoftJson(options =>
                 {
-                    var sNamingStrategy = new CamelCaseNamingStrategy {OverrideSpecifiedNames = false};
-                    options.SerializerSettings.Converters.Add(
-                        new Newtonsoft.Json.Converters.StringEnumConverter(sNamingStrategy, true));
+                    options.SerializerSettings.Converters
+                        .Add(new StringEnumConverter(new DefaultNamingStrategy()));
+                })
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 });
             services.AddCarsApplicationServices();
             services.AddSwaggerGen(c =>
@@ -42,6 +49,8 @@ namespace Cars.Api
                     Title = "My API",
                     Version = "v1"
                 });
+                c.CustomOperationIds(apiDesc =>
+                    apiDesc.TryGetMethodInfo(out MethodInfo methodInfo) ? methodInfo.Name : null);
             });
         }
 

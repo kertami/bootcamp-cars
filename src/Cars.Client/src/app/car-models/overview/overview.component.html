@@ -1,1 +1,16 @@
-<p>overview works!</p>
+<a [routerLink]="['new']">New car model</a>
+
+<ul *ngIf="carModels$ | async as carModels; else loading">
+  <li *ngFor="let carModel of carModels">
+    <dl>
+      <dt>Name</dt>
+      <dd>{{carModel.name}}</dd>
+      <dt>Make</dt>
+      <dd>{{carModel.make}}</dd>
+    </dl>
+    <a [routerLink]="[carModel.id]">Edit</a>
+  </li>
+</ul>
+<ng-template #loading>
+  Loading...
+</ng-template>

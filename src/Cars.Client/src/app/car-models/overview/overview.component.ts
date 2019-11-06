@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {CarModelService} from '../../api/services/car-model.service';
+import {Observable} from 'rxjs';
+import {CarModelSummary} from '../../api/models';
 
 @Component({
   selector: 'app-overview',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
+  private carModels$: Observable<Array<CarModelSummary>>;
 
-  constructor() { }
+  constructor(private carModelService: CarModelService) { }
 
   ngOnInit() {
+    this.carModels$ = this.carModelService.getAllCarModels$Json();
   }
 
 }

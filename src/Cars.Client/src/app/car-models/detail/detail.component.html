@@ -1,1 +1,29 @@
-<p>detail works!</p>
+<form [formGroup]="formGroup">
+  <div>
+    <label>
+      Name:
+      <input type="text" formControlName="name" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Make:
+      <input type="text" formControlName="make" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Type:
+      <select formControlName="type">
+        <option [ngValue]="CarType.Berline">{{ CarType.Berline }}</option>
+        <option [ngValue]="CarType.Break">{{ CarType.Break }}</option>
+        <option [ngValue]="CarType.Hatchback">{{ CarType.Hatchback }}</option>
+        <option [ngValue]="CarType.Suv">{{ CarType.Suv }}</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <button [routerLink]="['..']">Cancel</button>
+    <button (click)="save()">Save</button>
+  </div>
+</form>

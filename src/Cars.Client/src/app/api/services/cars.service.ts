@@ -23,21 +23,21 @@ export class CarsService extends BaseService {
   }
 
   /**
-   * Path part for operation apiCarsGet
+   * Path part for operation getAll
    */
-  static readonly ApiCarsGetPath = '/api/Cars';
+  static readonly GetAllPath = '/api/Cars';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCarsGet$Plain()` instead.
+   * To access only the response body, use `getAll$Plain()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsGet$Plain$Response(params?: {
+  getAll$Plain$Response(params?: {
 
   }): Observable<StrictHttpResponse<Array<CarSummary>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, CarsService.ApiCarsGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, CarsService.GetAllPath, 'get');
     if (params) {
 
 
@@ -55,30 +55,30 @@ export class CarsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCarsGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `getAll$Plain$Response()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsGet$Plain(params?: {
+  getAll$Plain(params?: {
 
   }): Observable<Array<CarSummary>> {
 
-    return this.apiCarsGet$Plain$Response(params).pipe(
+    return this.getAll$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<Array<CarSummary>>) => r.body as Array<CarSummary>)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCarsGet$Json()` instead.
+   * To access only the response body, use `getAll$Json()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsGet$Json$Response(params?: {
+  getAll$Json$Response(params?: {
 
   }): Observable<StrictHttpResponse<Array<CarSummary>>> {
 
-    const rb = new RequestBuilder(this.rootUrl, CarsService.ApiCarsGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, CarsService.GetAllPath, 'get');
     if (params) {
 
 
@@ -96,36 +96,36 @@ export class CarsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCarsGet$Json$Response()` instead.
+   * To access the full response (for headers, for example), `getAll$Json$Response()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsGet$Json(params?: {
+  getAll$Json(params?: {
 
   }): Observable<Array<CarSummary>> {
 
-    return this.apiCarsGet$Json$Response(params).pipe(
+    return this.getAll$Json$Response(params).pipe(
       map((r: StrictHttpResponse<Array<CarSummary>>) => r.body as Array<CarSummary>)
     );
   }
 
   /**
-   * Path part for operation apiCarsPost
+   * Path part for operation createCar
    */
-  static readonly ApiCarsPostPath = '/api/Cars';
+  static readonly CreateCarPath = '/api/Cars';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCarsPost$Json$Plain()` instead.
+   * To access only the response body, use `createCar$Json$Plain()` instead.
    *
    * This method sends `application/json` and handles response body of type `application/json`
    */
-  apiCarsPost$Json$Plain$Response(params?: {
+  createCar$Json$Plain$Response(params?: {
 
     body?: CarDetail
   }): Observable<StrictHttpResponse<CarSummary>> {
 
-    const rb = new RequestBuilder(this.rootUrl, CarsService.ApiCarsPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, CarsService.CreateCarPath, 'post');
     if (params) {
 
 
@@ -144,32 +144,32 @@ export class CarsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCarsPost$Json$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `createCar$Json$Plain$Response()` instead.
    *
    * This method sends `application/json` and handles response body of type `application/json`
    */
-  apiCarsPost$Json$Plain(params?: {
+  createCar$Json$Plain(params?: {
 
     body?: CarDetail
   }): Observable<CarSummary> {
 
-    return this.apiCarsPost$Json$Plain$Response(params).pipe(
+    return this.createCar$Json$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<CarSummary>) => r.body as CarSummary)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCarsPost$Json$Json()` instead.
+   * To access only the response body, use `createCar$Json$Json()` instead.
    *
    * This method sends `application/json` and handles response body of type `application/json`
    */
-  apiCarsPost$Json$Json$Response(params?: {
+  createCar$Json$Json$Response(params?: {
 
     body?: CarDetail
   }): Observable<StrictHttpResponse<CarSummary>> {
 
-    const rb = new RequestBuilder(this.rootUrl, CarsService.ApiCarsPostPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, CarsService.CreateCarPath, 'post');
     if (params) {
 
 
@@ -188,37 +188,37 @@ export class CarsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCarsPost$Json$Json$Response()` instead.
+   * To access the full response (for headers, for example), `createCar$Json$Json$Response()` instead.
    *
    * This method sends `application/json` and handles response body of type `application/json`
    */
-  apiCarsPost$Json$Json(params?: {
+  createCar$Json$Json(params?: {
 
     body?: CarDetail
   }): Observable<CarSummary> {
 
-    return this.apiCarsPost$Json$Json$Response(params).pipe(
+    return this.createCar$Json$Json$Response(params).pipe(
       map((r: StrictHttpResponse<CarSummary>) => r.body as CarSummary)
     );
   }
 
   /**
-   * Path part for operation apiCarsIdGet
+   * Path part for operation getCar
    */
-  static readonly ApiCarsIdGetPath = '/api/Cars/{id}';
+  static readonly GetCarPath = '/api/Cars/{id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCarsIdGet$Plain()` instead.
+   * To access only the response body, use `getCar$Plain()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsIdGet$Plain$Response(params: {
+  getCar$Plain$Response(params: {
     id: number;
 
   }): Observable<StrictHttpResponse<CarDetail>> {
 
-    const rb = new RequestBuilder(this.rootUrl, CarsService.ApiCarsIdGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, CarsService.GetCarPath, 'get');
     if (params) {
 
       rb.path('id', params.id);
@@ -237,32 +237,32 @@ export class CarsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCarsIdGet$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `getCar$Plain$Response()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsIdGet$Plain(params: {
+  getCar$Plain(params: {
     id: number;
 
   }): Observable<CarDetail> {
 
-    return this.apiCarsIdGet$Plain$Response(params).pipe(
+    return this.getCar$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<CarDetail>) => r.body as CarDetail)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCarsIdGet$Json()` instead.
+   * To access only the response body, use `getCar$Json()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsIdGet$Json$Response(params: {
+  getCar$Json$Response(params: {
     id: number;
 
   }): Observable<StrictHttpResponse<CarDetail>> {
 
-    const rb = new RequestBuilder(this.rootUrl, CarsService.ApiCarsIdGetPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, CarsService.GetCarPath, 'get');
     if (params) {
 
       rb.path('id', params.id);
@@ -281,38 +281,38 @@ export class CarsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCarsIdGet$Json$Response()` instead.
+   * To access the full response (for headers, for example), `getCar$Json$Response()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsIdGet$Json(params: {
+  getCar$Json(params: {
     id: number;
 
   }): Observable<CarDetail> {
 
-    return this.apiCarsIdGet$Json$Response(params).pipe(
+    return this.getCar$Json$Response(params).pipe(
       map((r: StrictHttpResponse<CarDetail>) => r.body as CarDetail)
     );
   }
 
   /**
-   * Path part for operation apiCarsIdPut
+   * Path part for operation updateCar
    */
-  static readonly ApiCarsIdPutPath = '/api/Cars/{id}';
+  static readonly UpdateCarPath = '/api/Cars/{id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCarsIdPut$Json$Plain()` instead.
+   * To access only the response body, use `updateCar$Json$Plain()` instead.
    *
    * This method sends `application/json` and handles response body of type `application/json`
    */
-  apiCarsIdPut$Json$Plain$Response(params: {
+  updateCar$Json$Plain$Response(params: {
     id: number;
 
     body?: CarDetail
   }): Observable<StrictHttpResponse<CarDetail>> {
 
-    const rb = new RequestBuilder(this.rootUrl, CarsService.ApiCarsIdPutPath, 'put');
+    const rb = new RequestBuilder(this.rootUrl, CarsService.UpdateCarPath, 'put');
     if (params) {
 
       rb.path('id', params.id);
@@ -332,34 +332,34 @@ export class CarsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCarsIdPut$Json$Plain$Response()` instead.
+   * To access the full response (for headers, for example), `updateCar$Json$Plain$Response()` instead.
    *
    * This method sends `application/json` and handles response body of type `application/json`
    */
-  apiCarsIdPut$Json$Plain(params: {
+  updateCar$Json$Plain(params: {
     id: number;
 
     body?: CarDetail
   }): Observable<CarDetail> {
 
-    return this.apiCarsIdPut$Json$Plain$Response(params).pipe(
+    return this.updateCar$Json$Plain$Response(params).pipe(
       map((r: StrictHttpResponse<CarDetail>) => r.body as CarDetail)
     );
   }
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCarsIdPut$Json$Json()` instead.
+   * To access only the response body, use `updateCar$Json$Json()` instead.
    *
    * This method sends `application/json` and handles response body of type `application/json`
    */
-  apiCarsIdPut$Json$Json$Response(params: {
+  updateCar$Json$Json$Response(params: {
     id: number;
 
     body?: CarDetail
   }): Observable<StrictHttpResponse<CarDetail>> {
 
-    const rb = new RequestBuilder(this.rootUrl, CarsService.ApiCarsIdPutPath, 'put');
+    const rb = new RequestBuilder(this.rootUrl, CarsService.UpdateCarPath, 'put');
     if (params) {
 
       rb.path('id', params.id);
@@ -379,38 +379,38 @@ export class CarsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCarsIdPut$Json$Json$Response()` instead.
+   * To access the full response (for headers, for example), `updateCar$Json$Json$Response()` instead.
    *
    * This method sends `application/json` and handles response body of type `application/json`
    */
-  apiCarsIdPut$Json$Json(params: {
+  updateCar$Json$Json(params: {
     id: number;
 
     body?: CarDetail
   }): Observable<CarDetail> {
 
-    return this.apiCarsIdPut$Json$Json$Response(params).pipe(
+    return this.updateCar$Json$Json$Response(params).pipe(
       map((r: StrictHttpResponse<CarDetail>) => r.body as CarDetail)
     );
   }
 
   /**
-   * Path part for operation apiCarsIdDelete
+   * Path part for operation deleteCar
    */
-  static readonly ApiCarsIdDeletePath = '/api/Cars/{id}';
+  static readonly DeleteCarPath = '/api/Cars/{id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `apiCarsIdDelete()` instead.
+   * To access only the response body, use `deleteCar()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsIdDelete$Response(params: {
+  deleteCar$Response(params: {
     id: number;
 
   }): Observable<StrictHttpResponse<void>> {
 
-    const rb = new RequestBuilder(this.rootUrl, CarsService.ApiCarsIdDeletePath, 'delete');
+    const rb = new RequestBuilder(this.rootUrl, CarsService.DeleteCarPath, 'delete');
     if (params) {
 
       rb.path('id', params.id);
@@ -429,16 +429,16 @@ export class CarsService extends BaseService {
 
   /**
    * This method provides access to only to the response body.
-   * To access the full response (for headers, for example), `apiCarsIdDelete$Response()` instead.
+   * To access the full response (for headers, for example), `deleteCar$Response()` instead.
    *
    * This method doesn't expect any response body
    */
-  apiCarsIdDelete(params: {
+  deleteCar(params: {
     id: number;
 
   }): Observable<void> {
 
-    return this.apiCarsIdDelete$Response(params).pipe(
+    return this.deleteCar$Response(params).pipe(
       map((r: StrictHttpResponse<void>) => r.body as void)
     );
   }
