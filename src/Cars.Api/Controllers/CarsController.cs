@@ -19,13 +19,13 @@ namespace Cars.Api.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CarDetail>>> GetAll()
+        public async Task<ActionResult<IEnumerable<CarSummary>>> GetAll()
         {
             return Ok(await _carManager.GetAllCarsAsync());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<string>> GetCar(int id)
+        public async Task<ActionResult<CarDetail>> GetCar(int id)
         {
             return Ok(await _carManager.GetCarAsync(id));
         }
