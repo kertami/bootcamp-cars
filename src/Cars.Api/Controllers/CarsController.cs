@@ -33,7 +33,8 @@ namespace Cars.API.Controllers
         [HttpPost]
         public async Task<ActionResult<CarSummary>> CreateCar([FromBody] CarDetail car)
         {
-            return Ok(await _carManager.CreateCarAsync(car));
+            var carSummary = await _carManager.CreateCarAsync(car);
+            return CreatedAtAction("GetCar", new { id = carSummary.Id},carSummary);
         }
 
         [HttpPut("{id}")]
@@ -42,7 +43,7 @@ namespace Cars.API.Controllers
             return Ok(await _carManager.UpdateCarAsync(id, car));
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public Task DeleteCar(int id)
         {
             return _carManager.DeleteCarAsync(id);

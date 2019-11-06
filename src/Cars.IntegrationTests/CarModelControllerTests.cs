@@ -10,6 +10,7 @@ using Xunit;
 
 namespace Cars.IntegrationTests
 {
+    [Collection("Integration tests")]
     public class CarModelControllerTests : IClassFixture<CustomWebApplicationFactory<Startup>>
     {
         private readonly CustomWebApplicationFactory<Startup> _factory;
@@ -18,6 +19,7 @@ namespace Cars.IntegrationTests
         {
             _factory = factory;
         }
+        
         [Fact]
         public async Task GetAllCarModels()
         {

@@ -58,7 +58,6 @@ namespace Cars.Application.Managers
             {
                 ModelId = carDetail.ModelId,
                 Model = await _ctx.CarModels
-                    .Include(x => x.Make)
                     .FirstAsync(carModel => carModel.Id == carDetail.ModelId),
                 Co2 = carDetail.Co2,
                 Color = carDetail.Color,

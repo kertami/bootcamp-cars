@@ -71,10 +71,26 @@ namespace Cars.IntegrationTests
     {
         public static async Task ClearAll(this DataContext ctx)
         {
-            ctx.CarModels.RemoveRange(await ctx.CarModels.ToListAsync());
             ctx.Cars.RemoveRange(await ctx.Cars.ToListAsync());
+            ctx.CarModels.RemoveRange(await ctx.CarModels.ToListAsync());
 
             await ctx.SaveChangesAsync();
+        }
+        public static async Task<Car> AddCar(this DataContext ctx, CarModel model, string vin, int co2,
+            string color)
+        {
+            var car = new Car
+            {
+                Model = model,
+                Vin = vin,
+                Co2 = co2,
+                Color = color
+            };
+            ctx.Cars.Add(car);
+
+            await ctx.SaveChangesAsync();
+
+            return car;
         }
         public static async Task<CarModel> AddCarModel(this DataContext ctx, string make, string name, CarType type)
         {
