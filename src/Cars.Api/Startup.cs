@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Cars.Application;
 using Cars.Domain;
 using Microsoft.AspNetCore.Builder;
@@ -6,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 
 namespace Cars.Api
 {
@@ -22,8 +26,14 @@ namespace Cars.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(AddDbContextOptions);
-            
-            services.AddControllers();
+
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    var sNamingStrategy = new CamelCaseNamingStrategy {OverrideSpecifiedNames = false};
+                    options.SerializerSettings.Converters.Add(
+                        new Newtonsoft.Json.Converters.StringEnumConverter(sNamingStrategy, true));
+                });
             services.AddCarsApplicationServices();
             services.AddSwaggerGen(c =>
             {

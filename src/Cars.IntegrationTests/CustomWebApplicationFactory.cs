@@ -47,6 +47,8 @@ namespace Cars.IntegrationTests
                     
                     // Ensure the database is created.
                     db.Database.EnsureCreated();
+                    
+                    
                 }
             });
         }
