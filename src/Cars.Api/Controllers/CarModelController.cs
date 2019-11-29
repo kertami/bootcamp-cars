@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using Cars.Application.Managers.Interfaces;
 using Cars.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cars.Api.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class CarModelController : ControllerBase
     {
